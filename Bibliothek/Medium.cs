@@ -12,17 +12,21 @@ namespace Bibliothek
         public string Description { get; set; }
         public string Type { get; set; }
         public double Cost { get; set; }
-        public bool IsBorrowable { get; set; }
-        public int BorrowableDays { get; set; }
+        public bool IsBorrowed { get; set; }
+        public bool IsReserved { get; set; }
+        public DateTime BorrowedTill { get; set; }
 
-        public Medium(int id,string description, string type, double cost, bool isBorrowable, int borrowableDays)
+        public Medium(int id,string description, string type, double cost, bool isBorrowed, bool isReserved, DateTime borrowedTill)
         {
             Id = id;
             Description = description;
             Type = type;
             Cost = cost;
-            IsBorrowable = isBorrowable;
-            BorrowableDays = borrowableDays;
+            IsBorrowed = isBorrowed;
+            IsReserved = isReserved;
+            BorrowedTill = borrowedTill;
         }
+
+        
     }
 }

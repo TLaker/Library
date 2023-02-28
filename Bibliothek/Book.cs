@@ -12,7 +12,7 @@ namespace Bibliothek
         public string Author { get; set; }
         public int SizeOfPages { get; set; }
 
-        public Book(int id, string title, string author, int sizeOfPages, string description, string type, double cost, bool isBorrowable, int borrowableDays) : base(id, description, type, cost, isBorrowable, borrowableDays)
+        public Book(int id, string title, string author, int sizeOfPages, string description, string type, double cost, bool isBorrowed, DateTime borrowedTill) : base(id, description, type, cost, isBorrowed, borrowedTill)
         {
             Title = title;
             Author = author;

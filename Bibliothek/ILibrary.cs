@@ -11,8 +11,9 @@ namespace Bibliothek
         int Id { get; }
         string Name { get; }
         Address Address { get; }
-        List<Medium> Medias { get; }
+        List<Medium> Media { get; }
 
-
+        void BorrowFromTill(Medium medium, DateTime fromDateTime, DateTime tillDateTime);
+        void ReturnMedium(Medium medium);
     }
 }
