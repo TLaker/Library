@@ -3,22 +3,25 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-# TestPlaneShapes files
-TestPlaneShapes/[Dd]ebug/
-TestPlaneShapes/[Dd]ebugPublic/
-TestPlaneShapes/[Rr]elease/
-TestPlaneShapes/[Rr]eleases/
-TestPlaneShapes/x64/
-TestPlaneShapes/x86/
-TestPlaneShapes/[Ww][Ii][Nn]32/
-TestPlaneShapes/[Aa][Rr][Mm]/
-TestPlaneShapes/[Aa][Rr][Mm]64/
-TestPlaneShapes/bld/
-TestPlaneShapes/[Bb]in/
-TestPlaneShapes/[Oo]bj/
-TestPlaneShapes/[Oo]ut/
-TestPlaneShapes/[Ll]og/
-TestPlaneShapes/[Ll]ogs/
+# TestBibliothek files
+TestBibliothek/[Dd]ebug/
+TestBibliothek/[Dd]ebugPublic/
+TestBibliothek/[Rr]elease/
+TestBibliothek/[Rr]eleases/
+TestBibliothek/x64/
+TestBibliothek/x86/
+TestBibliothek/[Ww][Ii][Nn]32/
+TestBibliothek/[Aa][Rr][Mm]/
+TestBibliothek/[Aa][Rr][Mm]64/
+TestBibliothek/bld/
+TestBibliothek/[Bb]in/
+TestBibliothek/[Oo]bj/
+TestBibliothek/[Oo]ut/
+TestBibliothek/[Ll]og/
+TestBibliothek/[Ll]ogs/
+
+# Access token
+accessToken.txt
 
 # User-specific files
 *.rsuser
