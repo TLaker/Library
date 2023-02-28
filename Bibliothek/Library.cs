@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bibliothek
 {
-    internal class Library
+    internal class Library : ILibrary
     {
         public int Id { get; set; }
         public string Name { get; set; }
