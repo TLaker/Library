@@ -10,7 +10,8 @@ namespace Bibliothek
             //Customer or staff with Address
             //Library with Address and List of borrowable media
 
-
+            var work = new Work();
+            work.DoWork();
         }
     }
 }

@@ -8,3 +8,8 @@
 # Program: References to another class for processing tasks.
 # Library: CanBeBorrowed(), BorrowTill(), BorrowFromTill(), ReturnMedium(), RemoveMedium()
 # Medium: 
+# Book: 
+# Movie: 
+# Customer: AddMedium(), ReturnMedium()
+# Employee: 
+# Adress: 

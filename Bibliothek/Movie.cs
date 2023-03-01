@@ -8,12 +8,12 @@ namespace Bibliothek
 {
     internal class Movie : Medium
     {
-        public string Title { get; set; }
+        public string Regisseur { get; set; }
         public int PlayLengthMinutes { get; set; }
 
-        public Movie(int id, string title, int playLengthMinutes, string description, string type, double cost, bool isBorrowed, DateTime borrowedTill) : base(id, description, type, cost, isBorrowed, borrowedTill)
+        public Movie(int id, string title, string regisseur, int playLengthMinutes, string description, string type, double cost) : base(id, title, description, type, cost)
         {
-            Title = title;
+            Regisseur = regisseur;
             PlayLengthMinutes = playLengthMinutes;
         }
 

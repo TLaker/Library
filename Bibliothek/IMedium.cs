@@ -9,6 +9,7 @@ namespace Bibliothek
     internal interface IMedium
     {
         int Id { get; }
+        string Title { get; }
         string Description { get; }
         string Type { get; }
         double Cost { get; }

@@ -8,13 +8,11 @@ namespace Bibliothek
 {
     internal class Book : Medium
     {
-        public string Title { get; set; }
         public string Author { get; set; }
         public int SizeOfPages { get; set; }
 
-        public Book(int id, string title, string author, int sizeOfPages, string description, string type, double cost, bool isBorrowed, DateTime borrowedTill) : base(id, description, type, cost, isBorrowed, borrowedTill)
+        public Book(int id, string title, string author, int sizeOfPages, string description, string type, double cost) : base(id, title, description, type, cost)
         {
-            Title = title;
             Author = author;
             SizeOfPages = sizeOfPages;
         }

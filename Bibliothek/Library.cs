@@ -22,6 +22,25 @@ namespace Bibliothek
             Media = media;
         }
 
+        public void PrintMedia()
+        {
+            foreach (var obj in Media)
+            {
+                if (obj.GetType() == typeof(Book))
+                {
+                    Book item = (Book)obj;
+                    Console.WriteLine($"Id: {item.Id},\nTitle: {item.Title},\nAuthor: {item.Author},\nPages: {item.SizeOfPages},\nDescription: {item.Description}," +
+                        $"\nType: {item.Type},\nCost: {item.Cost}\n");
+                }
+                else if (obj.GetType() == typeof(Movie))
+                {
+                    Movie item = (Movie)obj;
+                    Console.WriteLine($"Id: {item.Id},\nTitle: {item.Title},\nRegisseur: {item.Regisseur},\nLength: {item.PlayLengthMinutes},\nDescription: {item.Description}," +
+                        $"\nType: {item.Type},\nCost: {item.Cost}\n");
+                }
+            }
+        }
+
         private bool CanBeBorrowed(Medium medium, DateTime dateTime)
         {
             if (!medium.IsReserved)
@@ -71,14 +90,19 @@ namespace Bibliothek
             }
         }
 
-        public void RemoveMedium(Medium medium)
+        public void RemoveMedium(Medium medium, Customer customer)
         {
             if (Media.Contains(medium))
             {
+                customer.AddMedium(medium);
                 Media.Remove(medium);
+            }
+            else
+            {
+                throw new Exception($"List does not contain Medium {medium.Id}");
             }
         }
 
-
+        
     }
 }
