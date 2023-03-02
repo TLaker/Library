@@ -6,10 +6,10 @@
 # Customer can return a borrowed Medium: Remove Medium from Customer list and add to Library list
 # Check if Medium is borrowed or reserved before borrowing
 # Program: References to another class for processing tasks.
-# Library: CanBeBorrowed(), BorrowTill(), BorrowFromTill(), ReturnMedium(), RemoveMedium()
+# Library: PrintMedia(), CanBeBorrowed(), BorrowTill(), BorrowFromTill(), ReturnMedium()
 # Medium: 
 # Book: 
 # Movie: 
-# Customer: AddMedium(), ReturnMedium()
+# Customer: PrintMedia(), AddMedium(), ReturnMedium()
 # Employee: 
 # Adress: 

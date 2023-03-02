@@ -13,7 +13,7 @@ namespace Bibliothek
         Address Address { get; }
         List<Medium> Media { get; }
 
-        void BorrowFromTill(Medium medium, DateTime fromDateTime, DateTime tillDateTime);
+        void BorrowFromTill(Medium medium, Customer customer, DateTime fromDateTime, DateTime tillDateTime);
         void ReturnMedium(Medium medium);
     }
 }

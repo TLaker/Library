@@ -30,13 +30,13 @@ namespace Bibliothek
                 {
                     Book item = (Book)obj;
                     Console.WriteLine($"Id: {item.Id},\nTitle: {item.Title},\nAuthor: {item.Author},\nPages: {item.SizeOfPages},\nDescription: {item.Description}," +
-                        $"\nType: {item.Type},\nCost: {item.Cost}\n");
+                        $"\nType: {item.Type},\nCost: {item.Cost},\nis borrowed: {item.IsBorrowed},\nis reserved: {item.IsReserved},\n{item.BorrowedTill}\n");
                 }
                 else if (obj.GetType() == typeof(Movie))
                 {
                     Movie item = (Movie)obj;
                     Console.WriteLine($"Id: {item.Id},\nTitle: {item.Title},\nRegisseur: {item.Regisseur},\nLength: {item.PlayLengthMinutes},\nDescription: {item.Description}," +
-                        $"\nType: {item.Type},\nCost: {item.Cost}\n");
+                        $"\nType: {item.Type},\nCost: {item.Cost},\nis borrowed: {item.IsBorrowed},\nis reserved: {item.IsReserved},\n{item.BorrowedTill}\n");
                 }
             }
         }
@@ -57,50 +57,38 @@ namespace Bibliothek
             return false;
         }
 
-        private void BorrowTill(Medium medium, DateTime dateTime)
+        private void BorrowTill(Medium medium, Customer customer, DateTime dateTime)
         {
             medium.BorrowedTill = dateTime;
             medium.IsBorrowed = true;
+            customer.AddMedium(medium);
         }
 
-        public void BorrowFromTill(Medium medium, DateTime fromDateTime, DateTime tillDateTime)
+        public void BorrowFromTill(Medium medium, Customer customer, DateTime fromDateTime, DateTime tillDateTime)
         {
             if (CanBeBorrowed(medium, tillDateTime))
             {
                 if (DateTime.Now < fromDateTime)
                 {
-                    BorrowTill(medium, tillDateTime);
                     medium.IsReserved = true;
                 }
                 else
                 {
-                    BorrowTill(medium, tillDateTime);
                     medium.IsReserved = false;
                 }
+                BorrowTill(medium, customer, tillDateTime);
+            }
+            else
+            {
+                Console.WriteLine("Medium is already borrowed or reserved");
             }
         }
 
         public void ReturnMedium(Medium medium)
         {
-            if (!Media.Contains(medium))
-            {
-                medium.IsBorrowed = false;
-                medium.IsReserved = false;
-                Media.Add(medium);
-            }
-        }
-
-        public void RemoveMedium(Medium medium, Customer customer)
-        {
-            if (Media.Contains(medium))
-            {
-                customer.AddMedium(medium);
-                Media.Remove(medium);
-            }
-            else
-            {
-                throw new Exception($"List does not contain Medium {medium.Id}");
-            }
+            medium.IsBorrowed = false;
+            medium.IsReserved = false;
+            medium.BorrowedTill = DateTime.MinValue;
         }
 
         
