@@ -11,7 +11,9 @@ namespace Bibliothek
             //Library with Address and List of borrowable media
 
             var work = new Work();
-            work.DoWork();
+            //work.DoWork();
+            var httpRequest = new HttpRequest();
+            Console.WriteLine(httpRequest.GetTest().Result);
         }
     }
 }

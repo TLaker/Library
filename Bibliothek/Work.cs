@@ -25,9 +25,7 @@ namespace Bibliothek
         
         public void DoWork()
         {
-            //Do not call customer.AddMedium() directly!
-            //customer.AddMedium(lib.Media.First<Medium>(x => x.Title == "Resident Evil"));
-            //customer.AddMedium(lib.Media.First<Medium>(x => x.Title == "Rick and Morty"));
+
             lib.BorrowFromTill(lib.Media.First<Medium>(x => x.Title == "Resident Evil"), customer, DateTime.Now, DateTime.Now.AddDays(14));
             lib.BorrowFromTill(lib.Media.First<Medium>(x => x.Title == "Rick and Morty"), customer, DateTime.Now.AddDays(4), DateTime.Now.AddDays(18));
             lib.BorrowFromTill(lib.Media.First<Medium>(x => x.Title == "Rick and Morty"), customer, DateTime.Now.AddDays(4), DateTime.Now.AddDays(18));
