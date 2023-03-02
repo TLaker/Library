@@ -6,9 +6,9 @@ ILibrary, IMedium
 # Inheritance: 
 Book and Movie from Medium, Library from ILibrary, Medium from IMedium
 # Mechanics: 
-Customer can borrow a Medium if it is not borrowed or reserved yet: Remove Medium from Library list and add to Customer list
-\nCustomer can return a borrowed Medium: Remove Medium from Customer list and add to Library list
-\nCheck if Medium is borrowed or reserved before borrowing
+Customer can borrow a Medium if it is not borrowed or reserved yet: Remove Medium from Library list and add to Customer list  
+Customer can return a borrowed Medium: Remove Medium from Customer list and add to Library list  
+Check if Medium is borrowed or reserved before borrowing
 # Program: 
 References to another class for processing tasks.
 # Library: 
