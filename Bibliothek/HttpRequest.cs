@@ -17,5 +17,15 @@ namespace Bibliothek
             var response = await _client.GetStringAsync(contentUrl);
             return response;
         }
+
+
+        //Makes an http request to the LibraryAPI
+        public async Task<string> MakeRequest(string libraryName, int mediumId)
+        {
+            var contentUrl = new Uri($"https://localhost:7135/api/Main/{libraryName}/{mediumId}");
+            var response = await _client.GetAsync(contentUrl);
+            var data = await response.Content.ReadAsStringAsync();
+            return data;
+        }
     }
 }

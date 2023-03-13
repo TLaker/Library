@@ -21,6 +21,7 @@ namespace Bibliothek
             Library = library;
         }
 
+        //Adds a medium to the library
         public void AddMediumToLibrary(Medium medium)
         {
             if (!Library.Media.Contains(medium))
@@ -28,6 +29,7 @@ namespace Bibliothek
                 if (IsProven(medium))
                 {
                     ChangeId(medium);
+                    medium.OwnedBy = Library;
                     Library.Media.Add(medium);
                 }
                 else
@@ -43,7 +45,8 @@ namespace Bibliothek
             switch (Console.ReadLine())
             {
                 case "Yes": return true;
-                case "No": return false;
+                case "Y": return true;
+                case "y": return true;
                 default: return false;
             }
         }

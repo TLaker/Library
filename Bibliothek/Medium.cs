@@ -16,8 +16,9 @@ namespace Bibliothek
         public bool IsBorrowed { get; set; }
         public bool IsReserved { get; set; }
         public DateTime BorrowedTill { get; set; }
+        public Library OwnedBy { get; set; }
 
-        public Medium(int id, string title, string description, string type, double cost)
+        public Medium(int id, string title, string description, string type, double cost, Library ownedBy)
         {
             Id = id;
             Title = title;
@@ -27,6 +28,7 @@ namespace Bibliothek
             IsBorrowed = false;
             IsReserved = false;
             BorrowedTill = DateTime.MinValue;
+            OwnedBy = ownedBy;
         }
 
 

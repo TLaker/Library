@@ -26,17 +26,20 @@ namespace Bibliothek
         {
             foreach (var obj in Media)
             {
-                if (obj.GetType() == typeof(Book))
+                if(obj.OwnedBy == this)
                 {
-                    Book item = (Book)obj;
-                    Console.WriteLine($"Id: {item.Id},\nTitle: {item.Title},\nAuthor: {item.Author},\nPages: {item.SizeOfPages},\nDescription: {item.Description}," +
-                        $"\nType: {item.Type},\nCost: {item.Cost},\nis borrowed: {item.IsBorrowed},\nis reserved: {item.IsReserved},\n{item.BorrowedTill}\n");
-                }
-                else if (obj.GetType() == typeof(Movie))
-                {
-                    Movie item = (Movie)obj;
-                    Console.WriteLine($"Id: {item.Id},\nTitle: {item.Title},\nRegisseur: {item.Regisseur},\nLength: {item.PlayLengthMinutes},\nDescription: {item.Description}," +
-                        $"\nType: {item.Type},\nCost: {item.Cost},\nis borrowed: {item.IsBorrowed},\nis reserved: {item.IsReserved},\n{item.BorrowedTill}\n");
+                    if (obj.GetType() == typeof(Book))
+                    {
+                        Book item = (Book)obj;
+                        Console.WriteLine($"Id: {item.Id},\nTitle: {item.Title},\nAuthor: {item.Author},\nPages: {item.SizeOfPages},\nDescription: {item.Description}," +
+                            $"\nType: {item.Type},\nCost: {item.Cost},\nis borrowed: {item.IsBorrowed},\nis reserved: {item.IsReserved},\n{item.BorrowedTill},\nis owned by: {item.OwnedBy.Name}\n");
+                    }
+                    else if (obj.GetType() == typeof(Movie))
+                    {
+                        Movie item = (Movie)obj;
+                        Console.WriteLine($"Id: {item.Id},\nTitle: {item.Title},\nRegisseur: {item.Regisseur},\nLength: {item.PlayLengthMinutes},\nDescription: {item.Description}," +
+                            $"\nType: {item.Type},\nCost: {item.Cost},\nis borrowed: {item.IsBorrowed},\nis reserved: {item.IsReserved},\n{item.BorrowedTill},\nis owned by: {item.OwnedBy.Name}\n");
+                    }
                 }
             }
         }
@@ -64,6 +67,7 @@ namespace Bibliothek
             customer.AddMedium(medium);
         }
 
+        //Not for direct use!
         public void BorrowFromTill(Medium medium, Customer customer, DateTime fromDateTime, DateTime tillDateTime)
         {
             if (CanBeBorrowed(medium, tillDateTime))
@@ -84,6 +88,17 @@ namespace Bibliothek
             }
         }
 
+        //Checks if a medium with the same title is available in the library
+        public Medium AskForMedium(string title)
+        {
+            foreach(var medium in Media)
+            {
+                if(medium.Title == title) return medium;
+            }
+            throw new NotImplementedException("Not available in this library");
+        }
+
+        //Not for direct use!
         public void ReturnMedium(Medium medium)
         {
             medium.IsBorrowed = false;

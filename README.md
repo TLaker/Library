@@ -1,4 +1,4 @@
-# Practice for learning more about OOP, tasks and threads in C#
+# Practice for learning more about OOP, APIs, tasks and threads in C#
 # Classes: 
 Program, Library, Medium, Book, Movie, Customer, Employee, Address
 # Interfaces: 

@@ -31,33 +31,60 @@ namespace Bibliothek
                 {
                     Book item = (Book)obj;
                     Console.WriteLine($"Id: {item.Id},\nTitle: {item.Title},\nAuthor: {item.Author},\nPages: {item.SizeOfPages},\nDescription: {item.Description}," + 
-                        $"\nType: {item.Type},\nCost: {item.Cost}\n");
+                        $"\nType: {item.Type},\nCost: {item.Cost},\nis owned by: {item.OwnedBy.Name}\n");
                 }
                 else if (obj.GetType() == typeof(Movie))
                 {
                     Movie item = (Movie)obj;
                     Console.WriteLine($"Id: {item.Id},\nTitle: {item.Title},\nRegisseur: {item.Regisseur},\nLength: {item.PlayLengthMinutes},\nDescription: {item.Description}," +
-                        $"\nType: {item.Type},\nCost: {item.Cost}\n");
+                        $"\nType: {item.Type},\nCost: {item.Cost},\nis owned by: {item.OwnedBy.Name}\n");
                 }
             }
         }
 
+        //Not for direct use!
         public void AddMedium(Medium medium)
         {
             if(!Media.Contains(medium))
                 Media.Add(medium);
         }
 
-        public void ReturnMedium(Medium medium, Library library)
+        //Lends or reserves a medium to the customer
+        public void BorrowMediumByTitle(string title, Library library, DateTime fromDateTime, DateTime tillDateTime)
         {
-            if (Media.Contains(medium))
+            try
             {
-                library.ReturnMedium(medium);
+                var medium = library.AskForMedium(title);
+                library.BorrowFromTill(medium, this, fromDateTime, tillDateTime);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        //Checks if a medium with the same title has been borrowed by the customer
+        public Medium AskForMedium(string title)
+        {
+            foreach (var medium in Media)
+            {
+                if (medium.Title == title) return medium;
+            }
+            throw new NotImplementedException("The customer did not borrow this title");
+        }
+
+        //Returns the medium to its belonging library
+        public void ReturnMediumByTitle(string title)
+        {
+            try
+            {
+                var medium = AskForMedium(title);
+                medium.OwnedBy.ReturnMedium(medium);
                 Media.Remove(medium);
             }
-            else
+            catch (Exception ex)
             {
-                throw new Exception($"List does not contain Medium {medium.Id}");
+                Console.WriteLine(ex.Message);
             }
         }
     }

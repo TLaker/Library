@@ -11,7 +11,7 @@ namespace Bibliothek
         public string Regisseur { get; set; }
         public int PlayLengthMinutes { get; set; }
 
-        public Movie(int id, string title, string regisseur, int playLengthMinutes, string description, string type, double cost) : base(id, title, description, type, cost)
+        public Movie(int id, string title, string regisseur, int playLengthMinutes, string description, string type, double cost, Library ownedBy) : base(id, title, description, type, cost, ownedBy)
         {
             Regisseur = regisseur;
             PlayLengthMinutes = playLengthMinutes;

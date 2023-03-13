@@ -16,7 +16,7 @@ namespace Bibliothek
         bool IsBorrowed { get; }
         bool IsReserved { get; }
         DateTime BorrowedTill { get; }
-
+        Library OwnedBy { get; }
 
         
     }

@@ -16,6 +16,10 @@ namespace Bibliothek
 
         void PrintMedia();
         void AddMedium(Medium medium);
-        void ReturnMedium(Medium medium, Library library);
+        void BorrowMediumByTitle(string title, Library library, DateTime fromDateTime, DateTime tillDateTime);
+        Medium AskForMedium(string title);
+        void ReturnMediumByTitle(string title);
+
+
     }
 }

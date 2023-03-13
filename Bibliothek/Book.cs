@@ -11,7 +11,7 @@ namespace Bibliothek
         public string Author { get; set; }
         public int SizeOfPages { get; set; }
 
-        public Book(int id, string title, string author, int sizeOfPages, string description, string type, double cost) : base(id, title, description, type, cost)
+        public Book(int id, string title, string author, int sizeOfPages, string description, string type, double cost, Library ownedBy) : base(id, title, description, type, cost, ownedBy)
         {
             Author = author;
             SizeOfPages = sizeOfPages;
